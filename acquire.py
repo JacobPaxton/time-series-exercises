@@ -16,9 +16,9 @@ def gulde_site_pull():
         store_data = requests.get(base_url + '/api/v1/stores').json()
         sales_data = requests.get(base_url + '/api/v1/sales').json()
         # Store each directory's first page data to dataframes
-        item_df = item_data['payload']['items']
-        store_df = store_data['payload']['stores']
-        sales_df = sales_data['payload']['sales']
+        item_df = pd.DataFrame(item_data['payload']['items'])
+        store_df = pd.DataFrame(store_data['payload']['stores'])
+        sales_df = pd.DataFrame(sales_data['payload']['sales'])
         # Iterate through item pages
         page = item_data['payload']['next_page']
         while page != None:
